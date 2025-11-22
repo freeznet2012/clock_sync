@@ -1,0 +1,23 @@
+<div class="timer-container">
+    <div class="time-display">
+        {{ formatTime(remainingTime) }}
+    </div>
+
+    <div class="input-controls" *ngIf="!isRunning">
+        <div class="input-group">
+            <label>Minutes</label>
+            <input type="number" [(ngModel)]="inputMinutes" min="0" max="59" />
+        </div>
+        <div class="input-group">
+            <label>Seconds</label>
+            <input type="number" [(ngModel)]="inputSeconds" min="0" max="59" />
+        </div>
+    </div>
+
+    <div class="controls">
+        <button *ngIf="!isRunning" (click)="start()" class="btn-start">Start</button>
+        <button *ngIf="isRunning" (click)="reset()" class="btn-reset">Reset</button>
+    </div>
+
+    <app-qr-share *ngIf="isRunning"></app-qr-share>
+</div>

@@ -1,0 +1,173 @@
+.home-container {
+    .header {
+        text-align: center;
+        margin-bottom: 2rem;
+        animation: fadeInDown 0.6s ease-out;
+
+        h1 {
+            font-family: 'Orbitron', monospace;
+            font-size: clamp(2rem, 6vw, 3.5rem);
+            font-weight: 900;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.5rem;
+            filter: drop-shadow(0 0 30px rgba(102, 126, 234, 0.5));
+        }
+
+        .subtitle {
+            font-size: 1rem;
+            color: var(--text-secondary);
+            font-weight: 300;
+        }
+    }
+
+    .tab-navigation {
+        display: flex;
+        gap: 1rem;
+        justify-content: center;
+        margin-bottom: 3rem;
+        flex-wrap: wrap;
+
+        .tab-btn {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1.25rem 2rem;
+            background: var(--bg-card);
+            backdrop-filter: blur(10px);
+            border: 2px solid var(--border-color);
+            border-radius: 15px;
+            color: var(--text-secondary);
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+            min-width: 140px;
+
+            &::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background: linear-gradient(135deg, rgba(102, 126, 234, 0.2) 0%, rgba(118, 75, 162, 0.2) 100%);
+                opacity: 0;
+                transition: opacity 0.3s;
+            }
+
+            .tab-icon {
+                font-size: 2rem;
+                transition: transform 0.3s;
+                position: relative;
+            }
+
+            .tab-label {
+                font-family: 'Inter', sans-serif;
+                font-size: 0.9rem;
+                font-weight: 600;
+                text-transform: uppercase;
+                letter-spacing: 1px;
+                position: relative;
+            }
+
+            &:hover {
+                transform: translateY(-5px);
+                border-color: #667eea;
+                color: var(--text-primary);
+
+                &::before {
+                    opacity: 1;
+                }
+
+                .tab-icon {
+                    transform: scale(1.1);
+                }
+            }
+
+            &.active {
+                background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                border-color: transparent;
+                color: white;
+                box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+
+                &::before {
+                    opacity: 0;
+                }
+
+                .tab-icon {
+                    transform: scale(1.15);
+                }
+            }
+        }
+    }
+
+    .tab-content {
+        width: 100%;
+        max-width: 800px;
+        margin: 0 auto;
+        animation: fadeIn 0.4s ease-out;
+    }
+
+    .info-section {
+        max-width: 600px;
+        text-align: center;
+        padding: 1.5rem;
+        background: rgba(255, 255, 255, 0.03);
+        border-radius: 15px;
+        border: 1px solid var(--border-color);
+        margin-top: 3rem;
+
+        p {
+            color: var(--text-secondary);
+            line-height: 1.6;
+            font-size: 0.95rem;
+        }
+    }
+}
+
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@media (max-width: 768px) {
+    .home-container {
+        .tab-navigation {
+            gap: 0.75rem;
+
+            .tab-btn {
+                min-width: 110px;
+                padding: 1rem 1.5rem;
+
+                .tab-icon {
+                    font-size: 1.75rem;
+                }
+
+                .tab-label {
+                    font-size: 0.8rem;
+                }
+            }
+        }
+    }
+}

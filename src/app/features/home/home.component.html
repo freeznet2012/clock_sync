@@ -1,0 +1,36 @@
+<div class="home-container">
+    <div class="header">
+        <h1>Clock Sync</h1>
+        <p class="subtitle">Synchronized time across all devices</p>
+    </div>
+
+    <!-- Tab Navigation -->
+    <div class="tab-navigation">
+        <button class="tab-btn" [class.active]="activeTab === 'stopwatch'" (click)="selectTab('stopwatch')">
+            <span class="tab-icon">⏱️</span>
+            <span class="tab-label">Stopwatch</span>
+        </button>
+        <button class="tab-btn" [class.active]="activeTab === 'timer'" (click)="selectTab('timer')">
+            <span class="tab-icon">⏲️</span>
+            <span class="tab-label">Timer</span>
+        </button>
+        <button class="tab-btn" [class.active]="activeTab === 'alarm'" (click)="selectTab('alarm')">
+            <span class="tab-icon">⏰</span>
+            <span class="tab-label">Alarm</span>
+        </button>
+    </div>
+
+    <!-- Tab Content -->
+    <div class="tab-content">
+        <app-stopwatch *ngIf="activeTab === 'stopwatch'"></app-stopwatch>
+        <app-timer *ngIf="activeTab === 'timer'"></app-timer>
+        <app-alarm *ngIf="activeTab === 'alarm'"></app-alarm>
+    </div>
+
+    <div class="info-section">
+        <p>
+            Share synchronized time sessions via QR code or link.
+            Perfect for games, studios, and collaborative timing.
+        </p>
+    </div>
+</div>

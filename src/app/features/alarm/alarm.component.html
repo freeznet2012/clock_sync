@@ -1,0 +1,29 @@
+<div class="alarm-container">
+    <div class="alarm-display" *ngIf="isRunning">
+        <div class="alarm-time">{{ getAlarmTime() }}</div>
+        <div class="countdown" *ngIf="!alarmTriggered">in {{ formatTime(timeUntilAlarm) }}</div>
+        <div class="alarm-status" *ngIf="alarmTriggered">🔔 ALARM!</div>
+    </div>
+
+    <div class="time-display" *ngIf="!isRunning">
+        Set Alarm
+    </div>
+
+    <div class="input-controls" *ngIf="!isRunning">
+        <div class="input-group">
+            <label>Hours</label>
+            <input type="number" [(ngModel)]="inputHours" min="0" max="23" />
+        </div>
+        <div class="input-group">
+            <label>Minutes</label>
+            <input type="number" [(ngModel)]="inputMinutes" min="0" max="59" />
+        </div>
+    </div>
+
+    <div class="controls">
+        <button *ngIf="!isRunning" (click)="start()" class="btn-start">Set Alarm</button>
+        <button *ngIf="isRunning" (click)="reset()" class="btn-reset">Cancel</button>
+    </div>
+
+    <app-qr-share *ngIf="isRunning"></app-qr-share>
+</div>

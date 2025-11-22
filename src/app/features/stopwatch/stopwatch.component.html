@@ -1,0 +1,12 @@
+<div class="stopwatch-container">
+  <div class="time-display">
+    {{ formatTime(elapsedTime) }}
+  </div>
+  
+  <div class="controls">
+    <button *ngIf="!isRunning" (click)="start()" class="btn-start">Start</button>
+    <button *ngIf="isRunning" (click)="reset()" class="btn-reset">Reset</button>
+  </div>
+
+  <app-qr-share *ngIf="isRunning"></app-qr-share>
+</div>
